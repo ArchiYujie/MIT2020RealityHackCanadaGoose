@@ -296,9 +296,9 @@ public class SleepTimePicker : MonoBehaviour
                 while ((line = reader.ReadLine()) != null)
                 {
                     if (line.Contains("[FlightStartTime]"))
-                        flightStartTime = int.Parse(line.Replace("[FlightStartTime]", "").Trim());
+                        flightStartTime = float.Parse(line.Replace("[FlightStartTime]", "").Trim());
                     else if (line.Contains("[FlightEndTime]"))
-                        flightEndTime = int.Parse(line.Replace("[FlightEndTime]", "").Trim());
+                        flightEndTime = float.Parse(line.Replace("[FlightEndTime]", "").Trim());
                 }
             }
         } catch (Exception e)

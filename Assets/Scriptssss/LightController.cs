@@ -72,9 +72,9 @@ public class LightController : MonoBehaviour
                 while ((line = reader.ReadLine()) != null)
                 {
                     if (line.Contains("[SleepStartTime]"))
-                        sleepStartTime = int.Parse(line.Replace("[SleepStartTime]", "").Trim());
+                        sleepStartTime = float.Parse(line.Replace("[SleepStartTime]", "").Trim());
                     else if (line.Contains("[SleepEndTime]"))
-                        sleepEndTime = int.Parse(line.Replace("[SleepEndTime]", "").Trim());
+                        sleepEndTime = float.Parse(line.Replace("[SleepEndTime]", "").Trim());
                 }
             }
         } catch (Exception e)
@@ -94,9 +94,9 @@ public class LightController : MonoBehaviour
                 while ((line = reader.ReadLine()) != null)
                 {
                     if (line.Contains("[FlightStartTime]"))
-                        flightStartTime = int.Parse(line.Replace("[FlightStartTime]", "").Trim());
+                        flightStartTime = float.Parse(line.Replace("[FlightStartTime]", "").Trim());
                     else if (line.Contains("[FlightEndTime]"))
-                        flightEndTime = int.Parse(line.Replace("[FlightEndTime]", "").Trim());
+                        flightEndTime = float.Parse(line.Replace("[FlightEndTime]", "").Trim());
                 }
             }
         }
@@ -108,6 +108,11 @@ public class LightController : MonoBehaviour
 
     void UpdateLight(float simHrs, Light light)
     {
+        Debug.Log("flightStartTime: " + flightStartTime.ToString());
+        Debug.Log("flightEndTime: " + flightEndTime.ToString());
+        Debug.Log("sleepStartTime: " + sleepStartTime.ToString());
+        Debug.Log("sleepEndTime: " + sleepEndTime.ToString());
+
         float duration = (sleepEndTime - sleepStartTime)/2;
 
         if (simHrs < sleepStartTime)
